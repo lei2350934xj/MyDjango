@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="33d9409c-4aad-41fa-9673-3ee8f7d6709a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/1-django.xmind" afterPath="$PROJECT_DIR$/1-django.xmind" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myApp/admin.py" afterPath="$PROJECT_DIR$/myApp/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myApp/models.py" afterPath="$PROJECT_DIR$/myApp/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myApp/views.py" afterPath="$PROJECT_DIR$/myApp/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/settings.py" afterPath="$PROJECT_DIR$/project/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/urls.py" afterPath="$PROJECT_DIR$/project/urls.py" />
-    </list>
+    <list default="true" id="33d9409c-4aad-41fa-9673-3ee8f7d6709a" name="Default" comment="" />
     <ignored path="project.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
