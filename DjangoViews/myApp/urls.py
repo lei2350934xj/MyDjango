@@ -23,5 +23,21 @@ urlpatterns = [
     url(r'^age/$', views.findMax),
     # 比较男女比例
     url(r'^JudgeF/$', views.JudgeF),
-    url(r'^JudgeQ/$', views.JudgeQ)
+    url(r'^JudgeQ/$', views.JudgeQ),
+    # 利用GET属性获取url请求内容
+    url(r'^attribute/$', views.attribute),
+    # 查看HttpResponse
+    url(r'^httpresponse/$', views.httpresponse),
+    # 设置cookie
+    url(r'^cookietest/$', views.cookietest),
+    # 重定向
+    url(r'redirect1/$', views.redirect1),
+    url(r'redirect2/$', views.redirect2),
+
+    url(r'^index/$', views.index),
+    # url(r'^index/login/$', views.login),
+    url(r'^login/$', views.login),
+    # url(r'^index/login/showIndex/$', views.showindex)
+    url(r'^showIndex/$', views.showindex)
+
 ]

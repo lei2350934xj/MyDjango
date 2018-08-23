@@ -5,7 +5,23 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse('创建一个views')
+    # 取session的值
+    username = request.session.get('username','游客')
+    print(username)
+
+    return render(request, 'myApp/index.html', {'username':username})
+
+def login(request):
+    return render(request, 'myApp/login.html')
+
+def showindex(request):
+    print('showindex start')
+    # 获取
+    username = request.POST.get('username')
+    # 存
+    request.session['username'] = username
+    request.set_expiry(10)  # 设置过期时间
+    return redirect('/index')
 
 def detail(request, num):
     return HttpResponse('viwes的详细信息%s'%num)
@@ -51,29 +67,65 @@ def addstudent2(request):
     return HttpResponse('66666')
 
 # 分页显示
-def page(response, num):
+def page(request, num):
     num = int(num)
     studentsList = Students.objects.all()[(num-1)*5:num*5]
-    return render(response, 'myApp/students.html', {'students':studentsList})
+    return render(request, 'myApp/students.html', {'students':studentsList})
 
-def studentSearch(response):
+def studentSearch(request):
     studentsList = Students.objects.filter(sname__contains='孙')
-    return render(response, 'myApp/students.html', {'students':studentsList})
+    return render(request, 'myApp/students.html', {'students':studentsList})
 
-def findMax(response):
+def findMax(request):
     studentsList = Students.objects.aggregate(Max('sage'))
     print(studentsList)
-    return render(response, 'myApp/students.html', {'students':studentsList})
+    return render(request, 'myApp/students.html', {'students':studentsList})
 
 from django.db.models import F,Q
-def JudgeF(response):
+def JudgeF(request):
     g = Grades.objects.filter(ggirlnum__gt=F('gboynum'))
     print(g)
     return HttpResponse(g)
 
-def JudgeQ(response):
+def JudgeQ(request):
     studentsList = Students.objects.filter(Q(pk__lt=2) | Q(sage=50))
-    return render(response, 'myApp/students.html', {'students':studentsList})
+    return render(request, 'myApp/students.html', {'students':studentsList})
+
+def attribute(request):
+    print(request.GET)
+    print(request.path)
+    return HttpResponse('skr skr skr')
+
+
+def httpresponse(request):
+    res = HttpResponse()
+    print(res.content)
+    print(res.charset)
+    print(res.status_code)
+    print(res.content-type)
+    return res
+
+
+def cookietest(request):
+    res = HttpResponse()
+    # 设置cookie
+    cookie = res.set_cookie("lttt","adad ")
+    # 获取cookie
+    getCookie = request.COOKIES
+    return HttpResponse(getCookie)
+
+# 重定向
+from django.http import HttpResponseRedirect, JsonResponse
+from django.shortcuts import redirect
+def redirect1(request):
+    # 重定向到redirect2去
+    return HttpResponseRedirect('/redirect2')
+    # return redirect('redirect2')
+
+def redirect2(request):
+    return HttpResponse('我是重定向后的视图')
+
+
 
 # 数据库操作
 # def testdb(request):
