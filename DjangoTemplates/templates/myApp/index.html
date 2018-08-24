@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+</head>
+<body>
+    <h1>欢迎</h1>
+    {% ifequal num 1 %}
+        <h3>num={{num}}</h3>
+    {% endifequal %}
+    {% ifequal num 2%}
+        <h3>num={{num}}</h3>
+    {% endifequal %}
+    {% ifequal num 3%}
+        <h3>num={{num}}</h3>
+    {% endifequal %}
+
+    <h1>学生列表</h1>
+    <ul>
+        {% for stu in students %}
+        <li>
+            {{forloop.counter}}---{{stu.sname}}
+        </li>
+        {% empty %}
+        <li>没有学生</li>
+        {% endfor %}
+    </ul>
+
+    <li>{{str|upper}}</li>
+    <li>{{list|join:'---'}}</li>
+    <li>{{ttt|default:'没有东西，默认值'}}</li>
+    <li>{{num|add:5}}</li>
+    <li>{{num|add:-5}}</li>
+
+    <h2>跳转链接</h2>
+    <a href="{% url 'app:login' %}">点我点我</a>
+
+    {{origin}}
+    {{origin|safe}}
+    {% autoescape off %}
+        {{origin}}
+    {% endautoescape %}
+</body>
+</html>
